@@ -416,6 +416,7 @@ MercadoPago\SDK::setAccessToken("TEST-6130437869845619-051019-eabe799ac58155883b
             cursor: pointer;
             border: 0;
         } </style>
+    <script src="https://www.mercadopago.com/v2/security.js" view=""></script>
 </head>
 
 
@@ -469,6 +470,7 @@ MercadoPago\SDK::setAccessToken("TEST-6130437869845619-051019-eabe799ac58155883b
                         <p>Estado del pago: <?PHP echo $_GET["collection_status"] ?></p>
                         <p>Referencia: <?PHP echo $_GET["external_reference"] ?></p>
                         <p>Tipo de medio de pago: <?PHP echo $_GET["payment_type"] ?></p>
+                        <p>Preferencia: <?PHP echo $_GET["preference_id"] ?></p>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,10 @@
 <?php
 require_once "vendor/autoload.php"; // You have to require the library from your Composer vendor folder
 
-MercadoPago\SDK::setAccessToken("APP_USR-6130437869845619-051019-4098ec4301c07a6e4e57c67a2c515cac-18786685"); // Either Production or SandBox AccessToken
+$access_token = "TEST-8426002329782059-102723-9b17e3abf780c1c690cc6c5b26edcab3-664225366";
+MercadoPago\SDK::setAccessToken($access_token); // Either Production or SandBox AccessToken
+
+$url_base = "https://mrdemarchi-mp-ecommerce-php.herokuapp.com/";
 
 $title = $_POST["title"];
 $price = $_POST["price"];
@@ -18,17 +21,18 @@ $item = [
     "currency_id" => "ARS",
     "quantity" => (int) $_POST["unit"],
     "unit_price" => (float) $_POST["price"],
-    "picture_url" => "https://mrdemarchi-mp-ecommerce-php.herokuapp.com/" . str_replace("./", "", $_POST["img"])
+    "picture_url" => $url_base . str_replace("./", "", $_POST["img"])
 ];
+
 
 $preference->items = [$item];
 $preference->auto_return = "approved";
 $preference->external_reference = "mrdemarchi@gmail.com";
-//TODO $preference->notification_url = "";
+$preference->notification_url = $url_base . "notification.php";
 $preference->back_urls = [
-    "failure" => "https://mrdemarchi-mp-ecommerce-php.herokuapp.com/failure.php",
-    "pending" => "https://mrdemarchi-mp-ecommerce-php.herokuapp.com/pending.php",
-    "success" => "https://mrdemarchi-mp-ecommerce-php.herokuapp.com/success.php"
+    "failure" => $url_base . "failure.php",
+    "pending" => $url_base . "pending.php",
+    "success" => $url_base . "success.php"
 ];
 $preference->payment_methods = [
     "excluded_payment_types" => [["id" => "atm"]],
@@ -37,7 +41,7 @@ $preference->payment_methods = [
 ];
 $payer = new \MercadoPago\Payer();
 $payer->name = "Lalo Landa";
-$payer->emil = "test_user_63274575@testuser.com";
+$payer->emil = "test_user_93446800@testuser.com";
 $payer->phone = ["area_code" => "11", "number" => "22223333"];
 $payer->address = ["street_name" => "False", "street_number" => 123, "zip_code" => "1111"];
 $preference->payer = $payer;
@@ -458,6 +462,7 @@ $preferenceSaved = $preference->save()
             cursor: pointer;
             border: 0;
         } </style>
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 </head>
 
 
@@ -503,7 +508,6 @@ $preferenceSaved = $preference->save()
                                         Smartphones
                                     </h2>
                                 </button>
-
 
                             </div>
 
@@ -565,6 +569,7 @@ $preferenceSaved = $preference->save()
                                         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                         data-preference-id="<?php echo $preference->id; ?>">
                                 </script>
+                                <a type="submit" class="mercadopago-button" style="padding: 12px" href="<?PHP echo $preference->init_point ?>">Pagar la compra con redirect</a>
 <!--                                <form method="post">-->
 <!--                                    <input type="hidden" name="title" value="--><?PHP //echo $title ?><!--">-->
 <!--                                    <input type="hidden" name="price" value="--><?PHP //echo $price ?><!--">-->

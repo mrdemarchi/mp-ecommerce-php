@@ -416,6 +416,7 @@ MercadoPago\SDK::setAccessToken("TEST-6130437869845619-051019-eabe799ac58155883b
             cursor: pointer;
             border: 0;
         } </style>
+    <script src="https://www.mercadopago.com/v2/security.js" view=""></script>
 </head>
 
 
