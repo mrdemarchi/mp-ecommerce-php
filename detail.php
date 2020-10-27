@@ -1,7 +1,7 @@
 <?php
 require_once "vendor/autoload.php"; // You have to require the library from your Composer vendor folder
 
-MercadoPago\SDK::setAccessToken("TEST-6130437869845619-051019-eabe799ac58155883bb32d8d1f5dc0c0-18786685"); // Either Production or SandBox AccessToken
+MercadoPago\SDK::setAccessToken("APP_USR-6130437869845619-051019-4098ec4301c07a6e4e57c67a2c515cac-18786685"); // Either Production or SandBox AccessToken
 
 $title = $_POST["title"];
 $price = $_POST["price"];
