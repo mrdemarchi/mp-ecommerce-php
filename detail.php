@@ -28,7 +28,7 @@ $item = [
 $preference->items = [$item];
 $preference->auto_return = "approved";
 $preference->external_reference = "mrdemarchi@gmail.com";
-$preference->notification_url = $url_base . "notification.php";
+$preference->notification_url = $url_base . "notification-save.php";
 $preference->back_urls = [
     "failure" => $url_base . "failure.php",
     "pending" => $url_base . "pending.php",
@@ -40,8 +40,9 @@ $preference->payment_methods = [
     "installments" => 6
 ];
 $payer = new \MercadoPago\Payer();
-$payer->name = "Lalo Landa";
-$payer->emil = "test_user_93446800@testuser.com";
+$payer->name = "Lalo";
+$payer->surname = "Landa";
+$payer->email = "test_user_93446800@testuser.com";
 $payer->phone = ["area_code" => "11", "number" => "22223333"];
 $payer->address = ["street_name" => "False", "street_number" => 123, "zip_code" => "1111"];
 $preference->payer = $payer;
