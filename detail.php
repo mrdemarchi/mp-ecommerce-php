@@ -21,7 +21,8 @@ $item = [
     "currency_id" => "ARS",
     "quantity" => (int) $_POST["unit"],
     "unit_price" => (float) $_POST["price"],
-    "picture_url" => $url_base . str_replace("./", "", $_POST["img"])
+    "picture_url" => $url_base . str_replace("./", "", $_POST["img"]),
+    "category_id" => "MLA1051"
 ];
 
 
@@ -34,6 +35,7 @@ $preference->back_urls = [
     "pending" => $url_base . "pending.php",
     "success" => $url_base . "success.php"
 ];
+$preference->integrator_id = "dev_24c65fb163bf11ea96500242ac130004";
 $preference->payment_methods = [
     "excluded_payment_types" => [["id" => "atm"]],
     "excluded_payment_methods" => [["id" => "amex"]],
@@ -566,11 +568,11 @@ $preferenceSaved = $preference->save()
                                         <?php echo "$" . $unit ?>
                                     </h3>
                                 </div>
-                                <script
-                                        src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-                                        data-preference-id="<?php echo $preference->id; ?>">
-                                </script>
-                                <a type="submit" class="mercadopago-button" style="padding: 12px" href="<?PHP echo $preference->init_point ?>">Pagar la compra con redirect</a>
+<!--                                <script-->
+<!--                                        src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"-->
+<!--                                        data-preference-id="--><?php //echo $preference->id; ?><!--">-->
+<!--                                </script>-->
+                                <a type="submit" class="mercadopago-button" style="padding: 12px" href="<?PHP echo $preference->init_point ?>">Pagar la compra</a>
 <!--                                <form method="post">-->
 <!--                                    <input type="hidden" name="title" value="--><?PHP //echo $title ?><!--">-->
 <!--                                    <input type="hidden" name="price" value="--><?PHP //echo $price ?><!--">-->
