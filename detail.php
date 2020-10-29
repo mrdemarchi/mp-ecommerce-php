@@ -36,7 +36,6 @@ $preference->back_urls = [
     "success" => $url_base . "success.php"
 ];
 $preference->integrator_id = "dev_24c65fb163bf11ea96500242ac130004";
-$preference->collector_id = "469485398";
 $preference->payment_methods = [
     "excluded_payment_types" => [["id" => "atm"]],
     "excluded_payment_methods" => [["id" => "amex"]],
