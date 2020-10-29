@@ -1,7 +1,7 @@
 <?php
 require_once "vendor/autoload.php"; // You have to require the library from your Composer vendor folder
 
-$access_token = "TEST-8426002329782059-102723-9b17e3abf780c1c690cc6c5b26edcab3-664225366";
+$access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398";
 MercadoPago\SDK::setAccessToken($access_token); // Either Production or SandBox AccessToken
 
 $url_base = "https://mrdemarchi-mp-ecommerce-php.herokuapp.com/";
@@ -36,6 +36,7 @@ $preference->back_urls = [
     "success" => $url_base . "success.php"
 ];
 $preference->integrator_id = "dev_24c65fb163bf11ea96500242ac130004";
+$preference->collector_id = "469485398";
 $preference->payment_methods = [
     "excluded_payment_types" => [["id" => "atm"]],
     "excluded_payment_methods" => [["id" => "amex"]],
